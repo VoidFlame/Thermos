@@ -721,7 +721,7 @@
          this.playerNetServerHandler.sendPacket(new S2EPacketCloseWindow(this.openContainer.windowId));
          this.closeContainer();
      }
-@@ -853,8 +1190,19 @@
+@@ -853,11 +1190,25 @@
      public void setPlayerHealthUpdated()
      {
          this.lastHealth = -1.0E8F;
@@ -740,8 +740,15 @@
 +
      public void addChatComponentMessage(IChatComponent p_146105_1_)
      {
-         this.playerNetServerHandler.sendPacket(new S02PacketChat(p_146105_1_));
-@@ -882,7 +1230,24 @@
+-        this.playerNetServerHandler.sendPacket(new S02PacketChat(p_146105_1_));
++        if(playerNetServerHandler != null)
++        {
++            this.playerNetServerHandler.sendPacket(new S02PacketChat(p_146105_1_));
++        }
+     }
+ 
+     protected void onItemUseFinish()
+@@ -882,7 +1233,24 @@
          this.lastExperience = -1;
          this.lastHealth = -1.0F;
          this.lastFoodLevel = -1;
@@ -766,7 +773,19 @@
      }
  
      protected void onNewPotionEffect(PotionEffect p_70670_1_)
-@@ -1037,6 +1402,114 @@
+@@ -939,7 +1307,10 @@
+ 
+     public void addChatMessage(IChatComponent p_145747_1_)
+     {
+-        this.playerNetServerHandler.sendPacket(new S02PacketChat(p_145747_1_));
++        if(playerNetServerHandler != null)
++        {
++            this.playerNetServerHandler.sendPacket(new S02PacketChat(p_145747_1_));
++        }
+     }
+ 
+     public boolean canCommandSenderUseCommand(int p_70003_1_, String p_70003_2_)
+@@ -1037,6 +1408,114 @@
          return this.field_143005_bX;
      }
  
