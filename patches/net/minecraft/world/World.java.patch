@@ -1618,7 +1618,18 @@
      public float getWeightedThunderStrength(float p_72819_1_)
      {
          return (this.prevThunderingStrength + (this.thunderingStrength - this.prevThunderingStrength) * p_72819_1_) * this.getRainStrength(p_72819_1_);
-@@ -3932,8 +4761,8 @@
+@@ -3781,9 +4610,7 @@
+ 
+     public Random setRandomSeed(int p_72843_1_, int p_72843_2_, int p_72843_3_)
+     {
+-        long l = (long)p_72843_1_ * 341873128712L + (long)p_72843_2_ * 132897987541L + this.getWorldInfo().getSeed() + (long)p_72843_3_;
+-        this.rand.setSeed(l);
+-        return this.rand;
++        return new Random(p_72843_1_ * 341873128712L + p_72843_2_ * 132897987541L + p_72843_3_ + this.getWorldInfo().getSeed());
+     }
+ 
+     public ChunkPosition findClosestStructure(String p_147440_1_, int p_147440_2_, int p_147440_3_, int p_147440_4_)
+@@ -3932,8 +4759,8 @@
       */
      public void addTileEntity(TileEntity entity)
      {
@@ -1629,7 +1640,7 @@
          {
              dest.add(entity);
          }
-@@ -4029,4 +4858,132 @@
+@@ -4029,4 +4856,132 @@
          }
          return count;
      }
